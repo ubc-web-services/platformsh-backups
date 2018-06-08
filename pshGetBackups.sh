@@ -32,4 +32,4 @@ tar -cvzf $backups_folder/$1/$d/private-$l.tar.gz $backups_folder/$1/$d/private
 rm -rf $backups_folder/$1/$d/private
 echo "Private files backed up..."
 
-exit
+#exit
