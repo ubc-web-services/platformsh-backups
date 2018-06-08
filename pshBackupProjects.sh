@@ -2,9 +2,9 @@
 
 rm DIR_LIST
 rm ID_LIST
-rm ID_LIST_RAW
+#rm ID_LIST_RAW
 
-platform project:list --format=tsv > ID_LIST_RAW
+#platform project:list --format=tsv > ID_LIST_RAW
 FIRST=1
 
 while IFS= read -r line; 
