@@ -4,6 +4,8 @@
 # If today is a Monday, archive backups from 10 days ago
 # Delete archive from 90 days ago, if it exists
 
+backups_folder=/ub01/backups
+
 d=$(date +%Y-%m-%d)
 DOW=$(date +%u)
 
@@ -14,11 +16,11 @@ while IFS= read -r project;
 do 
 	if [ "$DOW" == 1 ]
 	then 
-		mv backups/$project/$tendaysago backups/$project/archive/
+		mv $backups_folder/$project/$tendaysago $backups_folder/$project/archive/
 	else
-		rm -rf backups/$project/$tendaysago
+		rm -rf $backups_folder/$project/$tendaysago
 	fi
 
-	rm -rf backups/$project/archive/$threemonthsago
+	rm -rf $backups_folder/$project/archive/$threemonthsago
 
 done < DIR_LIST	
