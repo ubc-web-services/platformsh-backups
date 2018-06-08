@@ -32,4 +32,4 @@ do
 
 done < ID_LIST_RAW
 
-exit
+#exit
