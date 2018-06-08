@@ -18,7 +18,9 @@ fi
 platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory backups/$1/$d --project $2 --environment master
 echo "DB backed up..."
 
-platform --project=$2 --environment=master --mount=public/sites/default/files --target=backups/$1/$d/files --yes mount:download
+root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
+
+platform --project=$2 --environment=master --mount=$root/sites/default/files --target=backups/$1/$d/files --yes mount:download
 tar -cvzf backups/$1/$d/files-$l.tar.gz backups/$1/$d/files
 rm -rf backups/$1/$d/files
 echo "Files backed up..."
