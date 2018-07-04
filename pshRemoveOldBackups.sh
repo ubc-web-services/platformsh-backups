@@ -4,7 +4,7 @@
 # If today is a Monday, archive backups from 10 days ago
 # Delete archive from 90 days ago, if it exists
 
-backups_folder=/ub01/backups
+backups_folder=/ut01/backups
 
 d=$(date +%Y-%m-%d)
 DOW=$(date +%u)
