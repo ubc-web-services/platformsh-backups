@@ -17,12 +17,15 @@ do
 	if [ "$DOW" == 1 ]
 	then 
 		mv $backups_folder/$project/$tendaysago $backups_folder/$project/archive/
+		echo "moved $project backup from $tendaysago to archive"
 	else
 		if [ -n "$tendaysago" ]; then
 			rm -rf $backups_folder/$project/$tendaysago
+			echo "removed $project backup from $tendaysago"
 		fi	
 	fi
 		if [ -n "$threemonthsago" ]; then
 			rm -rf $backups_folder/$project/archive/$threemonthsago
+			echo "removed $project archive from $threemonthsago"
 		fi
 done < DIR_LIST	
