@@ -18,9 +18,11 @@ do
 	then 
 		mv $backups_folder/$project/$tendaysago $backups_folder/$project/archive/
 	else
-		rm -rf $backups_folder/$project/$tendaysago
+		if [ -n "$tendaysago" ]; then
+			rm -rf $backups_folder/$project/$tendaysago
+		fi	
 	fi
-
-	rm -rf $backups_folder/$project/archive/$threemonthsago
-
+		if [ -n "$threemonthsago" ]; then
+			rm -rf $backups_folder/$project/archive/$threemonthsago
+		fi
 done < DIR_LIST	
