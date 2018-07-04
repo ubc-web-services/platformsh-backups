@@ -9,8 +9,8 @@ backups_folder=/ut01/backups
 d=$(date +%Y-%m-%d)
 DOW=$(date +%u)
 
-tendaysago=$(date -j -v-10d -f "%Y-%m-%d" $d "+%Y-%m-%d")
-threemonthsago=$(date -j -v-90d -f "%Y-%m-%d" $d "+%Y-%m-%d")
+tendaysago=$(date --date "$d -10 days" +%Y-%m-%d)
+threemonthsago=$(date --date "$d -90 days" +%Y-%m-%d)
 
 while IFS= read -r project; 
 do 
