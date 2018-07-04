@@ -28,7 +28,7 @@ do
 	NAME="${NAME//\'/_}"
 
 	echo "${NAME}" >> DIR_LIST;
-	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
+	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 
 done < ID_LIST_RAW
 
