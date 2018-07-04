@@ -3,7 +3,7 @@
 backups_folder=/ut01/backups
 
 d=$(date +%Y-%m-%d)
-l=$(date +%Y-%m-%d::%H:%M)
+l=$(date +%Y-%m-%dT%H:%M)
 
 if [ ! -d $backups_folder/$1/archive ]; then
   mkdir -p $backups_folder/$1/archive;
