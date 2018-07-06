@@ -31,12 +31,12 @@ do
 	echo "destination $logs_folder/${NAME} "
 
 	#TODO run in pipeline instead?
- 	platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log
-	platform log app --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/app.log 
-	platform log cron --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/cron.log
-	platform log deploy --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/deploy.log 
-	platform log error --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/error.log 
-	platform log php.access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/php.access.log 
-	#platform log post-deploy --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/post-deploy.log 
+ 	BUILD_ID=dontKillMe platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log &
+	BUILD_ID=dontKillMe platform log app --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/app.log &
+	BUILD_ID=dontKillMe platform log cron --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/cron.log &
+	BUILD_ID=dontKillMe platform log deploy --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/deploy.log &
+	BUILD_ID=dontKillMe platform log error --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/error.log &
+	BUILD_ID=dontKillMe platform log php.access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/php.access.log &
+	#BUILD_ID=dontKillMe platform log post-deploy --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/post-deploy.log &
 	
 done < ID_LIST_RAW
