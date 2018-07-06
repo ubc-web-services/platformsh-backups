@@ -26,6 +26,11 @@ do
 	echo "getting platform log for ${NAME} ${PROJECT_ID}"
 	echo "destination $logs_folder/${NAME} "
 
+
+	if [ ! -d $logs_folder/${NAME} ]; then
+	  mkdir -p $logs_folder/${NAME};
+	fi
+
 	#if [ -n "${NAME}" ]
 	#then
  	platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log
