@@ -33,7 +33,7 @@ do
 
 	#if [ -n "${NAME}" ]
 	#then
- 	platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log
+ 	BUILD_ID=dontKillMe  platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log
 	#fi
 
 done < ID_LIST_RAW
