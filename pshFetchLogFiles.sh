@@ -26,9 +26,9 @@ do
 	echo "getting platform log for ${NAME} ${PROJECT_ID}"
 	echo "destination $logs_folder/${NAME} "
 
-	if [ -n "${NAME}" ]
-	then
+	#if [ -n "${NAME}" ]
+	#then
 	#	platform log access --project=${PROJECT_ID}  --environment=master > $logs_folder/${NAME}/access.log
-	fi
+	#fi
 
 done < ID_LIST_RAW
