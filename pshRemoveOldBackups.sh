@@ -14,17 +14,17 @@ threemonthsago=$(date --date "$d -90 days" +%Y-%m-%d)
 
 while IFS= read -r project; 
 do 
-	if [ "$DOW" == 1 ]
+	if [ "$DOW" == 1 ] && [ -d $backups_folder/$project/$tendaysago ]
 	then 
 		mv $backups_folder/$project/$tendaysago $backups_folder/$project/archive/
 		echo "moved $project backup from $tendaysago to archive"
 	else
-		if [ -n "$tendaysago" ]; then
+		if [ -d $backups_folder/$project/$tendaysago ]; then
 			rm -rf $backups_folder/$project/$tendaysago
 			echo "removed $project backup from $tendaysago"
 		fi	
 	fi
-		if [ -n "$threemonthsago" ]; then
+		if [ -d $backups_folder/$project/archive/$threemonthsago ]; then
 			rm -rf $backups_folder/$project/archive/$threemonthsago
 			echo "removed $project archive from $threemonthsago"
 		fi
