@@ -27,7 +27,7 @@ do
 	echo "Creating Snapshot of master for ${NAME} Project ID ${PROJECT_ID}";
 
 #	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
-# platform snapshot:create --environment=master --no-wait --yes -p="${PROJECT_ID}"
+# platform snapshot:create --environment=master --project="${PROJECT_ID}" --no-wait --yes
 	sleep 10
 
 done < ID_LIST_RAW
