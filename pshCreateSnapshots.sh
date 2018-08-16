@@ -28,7 +28,7 @@ do
 
 #	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 	platform snapshot:create --environment=master --project="${PROJECT_ID}" --no-wait --yes
-	sleep 10
+	sleep 15
 
 done < ID_LIST_RAW
 
