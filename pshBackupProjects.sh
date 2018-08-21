@@ -30,7 +30,9 @@ do
 	echo "${NAME}" >> DIR_LIST;
 	#BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 
-	echo "Creating Local Backup for ${NAME} Project ID ${PROJECT_ID}";
+	echo "Creating Local Backupsfor ${NAME} Project ID ${PROJECT_ID}";
+
+	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 
 	#sleep 15
 
