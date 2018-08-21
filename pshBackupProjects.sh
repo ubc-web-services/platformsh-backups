@@ -28,11 +28,8 @@ do
 	NAME="${NAME//\'/_}"
 
 	echo "${NAME}" >> DIR_LIST;
-	#BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 
 	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
-
-	sleep 10
 
 	backups_folder=/ut01/backups
 
@@ -51,7 +48,7 @@ do
 	  mkdir -p $backups_folder/${NAME}/$d/private;
 	fi
 
-	echo "${NAME} DB backed up..."
+	echo "${NAME} DB backing up..."
 	
 	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
 	
