@@ -1,10 +1,10 @@
 #!/bin/bash
 
-rm DIR_LIST
-rm ID_LIST
-rm ID_LIST_RAW
+#rm DIR_LIST
+#rm ID_LIST
+#rm ID_LIST_RAW
 
-platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
+#platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
 FIRST=1
 
 while IFS= read -r line; 
@@ -29,6 +29,8 @@ do
 
 	echo "${NAME}" >> DIR_LIST;
 	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
+
+	sleep 15
 
 done < ID_LIST_RAW
 
