@@ -32,6 +32,8 @@ do
 
 	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
 
+	sleep 10
+
 	backups_folder=/ut01/backups
 
 	d=$(date +%Y-%m-%d)
@@ -49,10 +51,9 @@ do
 	  mkdir -p $backups_folder/${NAME}/$d/private;
 	fi
 
+
 	BUILD_ID=dontKillMe platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master &
 	echo "${NAME} DB backed up..."
-
-	#sleep 10
 
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
