@@ -37,6 +37,18 @@ do
 	d=$(date +%Y-%m-%d)
 	l=$(date +%Y-%m-%dT%H:%M)
 
+	if [ ! -d $backups_folder/$1/archive ]; then
+	  mkdir -p $backups_folder/$1/archive;
+	fi
+
+	if [ ! -d $backups_folder/$1/$d/files ]; then
+	  mkdir -p $backups_folder/$1/$d/files;
+	fi
+
+	if [ ! -d $backups_folder/$1/$d/private ]; then
+	  mkdir -p $backups_folder/$1/$d/private;
+	fi
+
 	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
 	echo "${NAME} DB backed up..."
 
