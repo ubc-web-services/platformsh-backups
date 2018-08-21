@@ -49,7 +49,7 @@ do
 	  mkdir -p $backups_folder/${NAME}/$d/private;
 	fi
 
-	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
+#	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
 	echo "${NAME} DB backed up..."
 
 	#sleep 10
