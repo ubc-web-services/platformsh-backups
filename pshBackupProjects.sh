@@ -37,16 +37,16 @@ do
 	d=$(date +%Y-%m-%d)
 	l=$(date +%Y-%m-%dT%H:%M)
 
-	if [ ! -d $backups_folder/$1/archive ]; then
-	  mkdir -p $backups_folder/$1/archive;
+	if [ ! -d $backups_folder/${NAME}/archive ]; then
+	  mkdir -p $backups_folder/${NAME}/archive;
 	fi
 
-	if [ ! -d $backups_folder/$1/$d/files ]; then
-	  mkdir -p $backups_folder/$1/$d/files;
+	if [ ! -d $backups_folder/${NAME}/$d/files ]; then
+	  mkdir -p $backups_folder/${NAME}/$d/files;
 	fi
 
-	if [ ! -d $backups_folder/$1/$d/private ]; then
-	  mkdir -p $backups_folder/$1/$d/private;
+	if [ ! -d $backups_folder/${NAME}/$d/private ]; then
+	  mkdir -p $backups_folder/${NAME}/$d/private;
 	fi
 
 	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
