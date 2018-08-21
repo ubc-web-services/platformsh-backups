@@ -32,8 +32,8 @@ do
 
 	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
 
-	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
-
+#	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
+	sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 	#sleep 15
 
 done < ID_LIST_RAW
