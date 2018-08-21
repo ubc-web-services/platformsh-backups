@@ -28,9 +28,11 @@ do
 	NAME="${NAME//\'/_}"
 
 	echo "${NAME}" >> DIR_LIST;
-	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
+	#BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 
-	sleep 15
+	echo "Creating Local Backup for ${NAME} Project ID ${PROJECT_ID}";
+
+	#sleep 15
 
 done < ID_LIST_RAW
 
