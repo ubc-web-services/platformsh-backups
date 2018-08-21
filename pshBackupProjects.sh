@@ -52,7 +52,7 @@ do
 	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
 	echo "${NAME} DB backed up..."
 
-	sleep 10
+	#sleep 10
 
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
