@@ -32,10 +32,18 @@ do
 
 	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
 
-	sleep 5
+	backups_folder=/ut01/backups
+
+	d=$(date +%Y-%m-%d)
+	l=$(date +%Y-%m-%dT%H:%M)
+
+	platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master
+	echo "${NAME} DB backed up..."
+
+	sleep 10
 
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
-	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
+#	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 
 done < ID_LIST_RAW
 
