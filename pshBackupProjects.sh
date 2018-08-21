@@ -35,7 +35,7 @@ do
 	sleep 10
 		
 #	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
-	sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}"
+	BUILD_ID=dontKillMe sh pshGetBackups.sh "${NAME}" "${PROJECT_ID}" 
 
 done < ID_LIST_RAW
 
