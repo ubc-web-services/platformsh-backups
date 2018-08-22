@@ -21,7 +21,7 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
 
 echo "$1 DB dump started..." >> out.txt
 
-sleep 10
+#sleep 10
 
   size=0
   prevSize=-1
