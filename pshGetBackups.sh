@@ -31,20 +31,20 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
                 size=$(du -sh ${backupFile})
 
                 echo "size is $size"
+                echo "prevSize is $prevSize"
 
                 if [ "size" = "prevSize" ]; then
+                  echo "** size = prevSize"
                   break
                 else
                   sleep 1
                   prevSize=size
                   sleep 1
                   echo "echo sleep $i"
-                fi
-              else
-                if [$i -gt 2]; then
-                  break
-                else
-                  sleep 1
+                  if [$i -gt 5]; then
+                    echo "** breaking i > 5"
+                    break
+                  fi
                 fi
               fi
 
