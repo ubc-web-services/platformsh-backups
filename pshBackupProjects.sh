@@ -31,27 +31,6 @@ do
 
 	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
 
-	#backups_folder=/ut01/backups
-
-	#d=$(date +%Y-%m-%d)
-	#l=$(date +%Y-%m-%dT%H:%M)
-
-	#if [ ! -d $backups_folder/${NAME}/archive ]; then
-	#  mkdir -p $backups_folder/${NAME}/archive;
-	#fi
-
-	#if [ ! -d $backups_folder/${NAME}/$d/files ]; then
-	#  mkdir -p $backups_folder/${NAME}/$d/files;
-	#fi
-
-	#if [ ! -d $backups_folder/${NAME}/$d/private ]; then
-	#  mkdir -p $backups_folder/${NAME}/$d/private;
-	#fi
-
-	#echo "${NAME} DB backing up..."
-	
-	#BUILD_ID=dontKillMe platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master &
-
 	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 	
 done < ID_LIST_RAW
