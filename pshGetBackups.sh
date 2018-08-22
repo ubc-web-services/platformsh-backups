@@ -21,7 +21,7 @@ platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory $backups_folder/$
   
   for i in `seq 1 30`;
         do
-              if [ ! -d $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
+              if [ ! -e $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
                 sleep 1
                 echo "echo sleep $i"
               fi
