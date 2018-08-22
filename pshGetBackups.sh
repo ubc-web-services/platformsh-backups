@@ -33,7 +33,7 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
                 echo "size is $size"
                 echo "prevSize is $prevSize"
 
-                if [ "size" = "prevSize" ]; then
+                if [ "$size" = "$prevSize" ]; then
                   echo "** size = prevSize"
                   break
                 else
