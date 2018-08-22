@@ -32,4 +32,4 @@ root=$(platform --project=$2 --environment=master --property=web.locations./.roo
 #rm -rf $backups_folder/$1/$d/private
 #echo "$1 Private files backed up..."
 
-exit
+#exit
