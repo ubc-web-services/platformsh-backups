@@ -19,6 +19,7 @@ fi
 
 platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
 echo "$1 DB backed up..."
+echo "$1 DB backed up..." >> out.txt
 
 root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
 
