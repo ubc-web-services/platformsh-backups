@@ -28,7 +28,7 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
   
               if [ -e $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
 
-                size = `du -sh $backups_folder/$1/$d/db_dump-$l.sql.gz`
+                size = $(du -sh ${backups_folder}/${1}/${d}/db_dump-${l}.sql.gz)
 
                 if [ size -ne prevSize]; then
                   echo "size is $size"
