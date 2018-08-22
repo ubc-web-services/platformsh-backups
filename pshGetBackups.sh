@@ -17,7 +17,7 @@ if [ ! -d $backups_folder/$1/$d/private ]; then
   mkdir -p $backups_folder/$1/$d/private;
 fi
 
-platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
+platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
   
   for i in `seq 1 30`;
         do
