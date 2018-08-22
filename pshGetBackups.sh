@@ -17,7 +17,18 @@ if [ ! -d $backups_folder/$1/$d/private ]; then
   mkdir -p $backups_folder/$1/$d/private;
 fi
 
-test = $(platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master)
+platform db:dump --gzip -y -t -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
+  
+  for i in `seq 1 30`;
+        do
+              if [ ! -d $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
+                sleep 1
+                echo "echo sleep $i"
+              fi
+
+        done    
+        
+
 
 echo  "platform test command is a $test" 
 echo "$1 DB backed up..."
