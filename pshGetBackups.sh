@@ -19,11 +19,22 @@ fi
 
 platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
   
+  size = 0
+  prevSize = -1
   for i in `seq 1 30`;
         do
-              if [ ! -e $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
+  
+            echo "size is $size"
+  
+              #if [ ! -e $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
+              size = $(du -sh $backups_folder/$1/$d/db_dump-$l.sql.gz)
+
+              if [ size -ne prevSize]; then
+                echo "size is $size"
                 sleep 1
+                prevSize = size
                 echo "echo sleep $i"
+                sleep 1
               fi
 
         done    
