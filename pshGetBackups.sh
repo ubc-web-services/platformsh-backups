@@ -38,10 +38,10 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
                   break
                 else
                   sleep 1
-                  prevSize=size
+                  prevSize=$size
                   sleep 1
                   echo "echo sleep $i"
-                  if [$i -gt 5]; then
+                  if ["$i" -ge "5"]; then
                     echo "** breaking i > 5"
                     break
                   fi
