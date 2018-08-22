@@ -18,7 +18,11 @@ if [ ! -d $backups_folder/$1/$d/private ]; then
 fi
 
 platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
-  
+
+echo "$1 DB dump started..." >> out.txt
+
+sleep 10
+
   size=0
   prevSize=-1
   for i in `seq 1 30`;
@@ -49,9 +53,8 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
               fi
 
         done    
-       
-echo "$1 DB backed up..."
-echo "$1 DB backed up..." >> out.txt
+
+echo "$1 DB dump ended..." >> out.txt
 
 root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
 
