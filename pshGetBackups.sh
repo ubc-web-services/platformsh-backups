@@ -38,7 +38,7 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
                   sleep 1
                 fi
               else
-                if [$i -gt 2] 
+                if [$i -gt 2]; then
                   break
                 else
                   sleep 1
