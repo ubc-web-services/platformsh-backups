@@ -54,8 +54,6 @@ do
 
 	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 	
-	sleep 5
-
 done < ID_LIST_RAW
 
 cat out.txt
