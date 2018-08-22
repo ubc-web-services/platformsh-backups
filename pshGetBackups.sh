@@ -24,35 +24,32 @@ platform db:dump --gzip -y -f db_dump-$l.sql.gz --directory $backups_folder/$1/$
   for i in `seq 1 30`;
         do
   
-            echo "size is $size"
+            echo "size is $size" >> out.txt
   
               if [ -e $backups_folder/$1/$d/db_dump-$l.sql.gz ]; then
                 backupFile="${backups_folder}/${1}/${d}/db_dump-${l}.sql.gz"
                 size=$(du -sh ${backupFile})
 
-                echo "size is $size"
-                echo "prevSize is $prevSize"
+                echo "size is $size" >> out.txt
+                echo "prevSize is $prevSize" >> out.txt
 
                 if [ "$size" = "$prevSize" ]; then
-                  echo "** size = prevSize"
+                  echo "** size = prevSize" >> out.txt
                   break
                 else
                   sleep 1
                   prevSize=$size
                   sleep 1
                   echo "echo sleep $i"
-                  if ["$i" -ge "5"]; then
-                    echo "** breaking i > 5"
-                    break
-                  fi
+                  #if ["$i" -ge "5"]; then
+                  #  echo "** breaking i > 5"
+                  #  break
+                  #fi
                 fi
               fi
 
         done    
-        
-
-
-echo  "platform test command is a $test" 
+       
 echo "$1 DB backed up..."
 echo "$1 DB backed up..." >> out.txt
 
