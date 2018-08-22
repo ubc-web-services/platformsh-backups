@@ -56,4 +56,6 @@ do
 
 done < ID_LIST_RAW
 
+cat out.txt
+
 #exit
