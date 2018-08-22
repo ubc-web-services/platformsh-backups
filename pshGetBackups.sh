@@ -56,7 +56,7 @@ sleep 10
 
 echo "$1 DB dump ended..." >> out.txt
 
-root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
+#root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
 
 #platform --project=$2 --environment=master --mount=$root/sites/default/files --target=$backups_folder/$1/$d/files --yes mount:download
 #tar -cvzf $backups_folder/$1/$d/files-$l.tar.gz $backups_folder/$1/$d/files
