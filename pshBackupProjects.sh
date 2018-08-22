@@ -53,6 +53,8 @@ do
 	#BUILD_ID=dontKillMe platform db:dump --gzip -y -t -f db_dump-${NAME}.sql.gz --directory $backups_folder/${NAME}/$d --project ${PROJECT_ID} --environment master &
 
 	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
+	
+	sleep 5
 
 done < ID_LIST_RAW
 
