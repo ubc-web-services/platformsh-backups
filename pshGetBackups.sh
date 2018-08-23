@@ -17,9 +17,7 @@ if [ ! -d $backups_folder/$1/$d/private ]; then
   mkdir -p $backups_folder/$1/$d/private;
 fi
 
-sleep 5
-
-platform db:dump --gzip -y -f db_dump-$1.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
+platform db:dump --gzip -y -t -f db_dump-$1.sql.gz --directory $backups_folder/$1/$d --project $2 --environment master
 
 echo "$1 DB dump started..." >> out.txt
 
