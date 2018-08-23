@@ -33,10 +33,12 @@ do
 
 	sleep 5
 	
-	#BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
+	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
 	
 done < ID_LIST_RAW
 
-cat out.txt
+echo "End of Output File"
+
+tail -n 50 out.txt
 
 #exit
