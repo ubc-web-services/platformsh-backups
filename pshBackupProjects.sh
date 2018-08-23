@@ -37,8 +37,8 @@ do
 	
 done < ID_LIST_RAW
 
-echo "End of Output File"
+#echo "End of Output File"
 
-tail -n 50 out.txt
+#tail -n 50 out.txt
 
 #exit
