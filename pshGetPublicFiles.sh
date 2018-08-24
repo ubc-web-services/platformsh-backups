@@ -5,7 +5,7 @@ backups_folder=/ut01/backups
 d=$(date +%Y-%m-%d)
 l=$(date +%Y-%m-%dT%H:%M)
 
-# file master
+# public file master
 if [ ! -d $backups_folder/$1/files ]; then
   mkdir -p $backups_folder/$1/files;
 fi
@@ -14,13 +14,13 @@ if [ ! -d $backups_folder/$1/archive ]; then
   mkdir -p $backups_folder/$1/archive;
 fi
 
-if [ ! -d $backups_folder/$1/$d/files ]; then
-  mkdir -p $backups_folder/$1/$d/files;
-fi
+#if [ ! -d $backups_folder/$1/$d/files ]; then
+#  mkdir -p $backups_folder/$1/$d/files;
+#fi
 
-if [ ! -d $backups_folder/$1/$d/private ]; then
-  mkdir -p $backups_folder/$1/$d/private;
-fi
+#if [ ! -d $backups_folder/$1/$d/private ]; then
+#  mkdir -p $backups_folder/$1/$d/private;
+#fi
 
 root=$(platform --project=$2 --environment=master --property=web.locations./.root app:config-get)
 
