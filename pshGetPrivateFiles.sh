@@ -5,6 +5,11 @@ backups_folder=/ut01/backups
 d=$(date +%Y-%m-%d)
 l=$(date +%Y-%m-%dT%H:%M)
 
+# make sure daily exists
+if [ ! -d $backups_folder/$1/$d ]; then
+  mkdir -p $backups_folder/$1/$d;
+fi
+
 # private file master
 if [ ! -d $backups_folder/$1/private ]; then
   mkdir -p $backups_folder/$1/private;
