@@ -5,6 +5,11 @@ backups_folder=/ut01/backups
 d=$(date +%Y-%m-%d)
 l=$(date +%Y-%m-%dT%H:%M)
 
+# file master
+if [ ! -d $backups_folder/$1/files ]; then
+  mkdir -p $backups_folder/$1/files;
+fi
+
 if [ ! -d $backups_folder/$1/archive ]; then
   mkdir -p $backups_folder/$1/archive;
 fi
