@@ -46,15 +46,15 @@ for file in "$WORKSPACE"/ID_LIST*.process; do
 	case "$backuptype" in
 		"db")
 			echo "Creating DB Backups for ${NAME} Project ID ${PROJECT_ID}"
-			#BUILD_ID=dontKillMe bash -ex pshGetDB.sh "${NAME}" "${PROJECT_ID}" &
+			BUILD_ID=dontKillMe bash -ex pshGetDB.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 		"files")
 			echo "Creating Public File Backups for ${NAME} Project ID ${PROJECT_ID}"
-			#BUILD_ID=dontKillMe bash -ex pshGetPublicFiles.sh "${NAME}" "${PROJECT_ID}" &
+			BUILD_ID=dontKillMe bash -ex pshGetPublicFiles.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 		"private")
 			echo "Creating Private Backups for ${NAME} Project ID ${PROJECT_ID}"
-			#BUILD_ID=dontKillMe bash -ex pshGetPrivateFiles.sh "${NAME}" "${PROJECT_ID}" &
+			BUILD_ID=dontKillMe bash -ex pshGetPrivateFiles.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 	esac
 
