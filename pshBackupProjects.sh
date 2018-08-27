@@ -4,18 +4,32 @@
 #rm ID_LIST
 #rm ID_LIST_RAW
 
+# fetch list of projects
 #platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
-FIRST=1
 
-while IFS= read -r line; 
-do 
-	if [ "$FIRST" == 1 ]
-	then 
-		FIRST=0
-		continue
-	fi
+# set defaults if not passed in
+backuptype=${1:-db}
+itemcount=${2:-20}
+sleepduration=${3:-20}
 
-	IFS=$'\t' read -r -a parts <<< "$line"
+# remove header if above
+#sed '1d' ID_LIST_RAW > tmpFile
+#mv tmpFile ID_LIST_RAW
+
+# remove old processed files
+rm ID_LIST*.process
+
+# split into smaller files of 20 projects each
+split -l $itemcount ID_LIST_RAW ID_LIST --additional-suffix=.process
+
+# loop through each file
+for file in "$WORKSPACE"/ID_LIST*.process; do
+
+  echo "Processing File $file.....";
+
+  while IFS= read -r line; do
+
+    IFS=$'\t' read -r -a parts <<< "$line"
 
 	PROJECT_ID="${parts[0]}" 
 	echo "${PROJECT_ID}" >> ID_LIST;
@@ -29,14 +43,24 @@ do
 
 	echo "${NAME}" >> DIR_LIST;
 
-	echo "Creating Local Backups for ${NAME} Project ID ${PROJECT_ID}";
-	
-	BUILD_ID=dontKillMe bash -ex pshGetBackups.sh "${NAME}" "${PROJECT_ID}" &
-	
-done < ID_LIST_RAW
+	case "$backuptype" in
+		"db")
+			echo "Creating DB Backups for ${NAME} Project ID ${PROJECT_ID}"
+			#BUILD_ID=dontKillMe bash -ex pshGetDB.sh "${NAME}" "${PROJECT_ID}" &
+			;;
+		"files")
+			echo "Creating Public File Backups for ${NAME} Project ID ${PROJECT_ID}"
+			#BUILD_ID=dontKillMe bash -ex pshGetPublicFiles.sh "${NAME}" "${PROJECT_ID}" &
+			;;
+		"private")
+			echo "Creating Private Backups for ${NAME} Project ID ${PROJECT_ID}"
+			#BUILD_ID=dontKillMe bash -ex pshGetPrivateFiles.sh "${NAME}" "${PROJECT_ID}" &
+			;;
+	esac
 
-#echo "End of Output File"
+  done < $file
 
-#tail -n 50 out.txt
+# wait a while for next batch
+sleep $sleepduration
 
-#exit
+done
