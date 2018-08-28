@@ -5,11 +5,6 @@ backuptype=${1:-db}
 itemcount=${2:-20}
 sleepduration=${3:-20}
 
-# clean up
-rm DIR_LIST
-rm ID_LIST
-rm ID_LIST_RAW
-
 # fetch list of projects
 platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
 
@@ -47,15 +42,15 @@ for file in "$WORKSPACE"/ID_LIST*.process; do
 	case "$backuptype" in
 		"db")
 			echo "Creating DB Backups for ${NAME} Project ID ${PROJECT_ID}"
-			BUILD_ID=dontKillMe bash -ex pshGetDB.sh "${NAME}" "${PROJECT_ID}" &
+#			BUILD_ID=dontKillMe bash -ex pshGetDB.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 		"files")
 			echo "Creating Public File Backups for ${NAME} Project ID ${PROJECT_ID}"
-			BUILD_ID=dontKillMe bash -ex pshGetPublicFiles.sh "${NAME}" "${PROJECT_ID}" &
+#			BUILD_ID=dontKillMe bash -ex pshGetPublicFiles.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 		"private")
 			echo "Creating Private Backups for ${NAME} Project ID ${PROJECT_ID}"
-			BUILD_ID=dontKillMe bash -ex pshGetPrivateFiles.sh "${NAME}" "${PROJECT_ID}" &
+#			BUILD_ID=dontKillMe bash -ex pshGetPrivateFiles.sh "${NAME}" "${PROJECT_ID}" &
 			;;
 	esac
 
@@ -65,3 +60,8 @@ for file in "$WORKSPACE"/ID_LIST*.process; do
 sleep $sleepduration
 
 done
+
+# clean up
+rm DIR_LIST
+rm ID_LIST
+rm ID_LIST_RAW
