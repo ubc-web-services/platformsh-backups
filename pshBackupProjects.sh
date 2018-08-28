@@ -1,25 +1,26 @@
 #!/bin/sh
 
-#rm DIR_LIST
-#rm ID_LIST
-#rm ID_LIST_RAW
-
-# fetch list of projects
-#platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
-
 # set defaults if not passed in
 backuptype=${1:-db}
 itemcount=${2:-20}
 sleepduration=${3:-20}
 
+# clean up
+rm DIR_LIST
+rm ID_LIST
+rm ID_LIST_RAW
+
+# fetch list of projects
+platform project:list --host=ca-1.platform.sh --format=tsv > ID_LIST_RAW
+
 # remove header if above
-#sed '1d' ID_LIST_RAW > tmpFile
-#mv tmpFile ID_LIST_RAW
+sed '1d' ID_LIST_RAW > tmpFile
+mv tmpFile ID_LIST_RAW
 
 # remove old processed files
 rm ID_LIST*.process
 
-# split into smaller files of 20 projects each
+# split into smaller files of x projects each
 split -l $itemcount ID_LIST_RAW ID_LIST --additional-suffix=.process
 
 # loop through each file
