@@ -28,4 +28,4 @@ do
 			rm -rf $backups_folder/$project/archive/$threemonthsago
 			echo "removed $project archive from $threemonthsago"
 		fi
-done < DIR_LIST	
+done < DIR_LIST.last	
