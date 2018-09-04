@@ -60,6 +60,7 @@ done
 
 # save last processed
 cp ID_LIST_RAW ID_LIST_RAW.last
+cp DIR_LIST DIR_LIST.last
 
 # clean up
 rm DIR_LIST
